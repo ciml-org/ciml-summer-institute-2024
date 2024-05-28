@@ -12,7 +12,7 @@ Repository for the CIML 2024 Summer Institute training materials.
   * [Tuesday, June 20 – Preparation Day](#agenda-prep)
   * [Tuesday, June 25 - HPC & Parallel Concepts](#agenda-hpc-pc)
   * [Wednesday, June 26 - Deep Learning](#agenda-deep-learning)
-  * [Thursday, June 27 - Deep Learning](#agenda-scalable-ml-LLM)
+  * [Thursday, June 27 - Scalable Machine Learning & Large Language Model](#agenda-scalable-ml-LLM)
 * [Instructors](#instructors)
 * All presentations are located in this repository.
 
@@ -39,17 +39,18 @@ All times are in Pacific time.
 | **TIME (Pacific time)**       | **TOPIC** | **PRESENTER** |
 | -------------------- | ----------- | ----------- |
 | 8:00 AM – 8:30 AM  | Light Breakfast & Check-in |    |
-| 8:30 AM – 9:30 AM    | 	[2.1 Welcome and Introductions](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/2.1_welcome_and_introductions)|  [Mary Thomas](https://www.sdsc.edu/research/researcher_spotlight/thomas_mary.html)  |
- | 9:30 AM - 9:40 AM  | Break |    |
-| 9:40 AM – 11:00 AM	   |  [2.2 Parallel Computing Concepts](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/2.2_parallel_computing_concepts)| [Robert Sinkovits](https://www.sdsc.edu/research/researcher_spotlight/sinkovits_robert.html) |
- | 11:00 AM – 11:10 PM  | Break |    |
-| 11:10 AM – 12:30 PM   | 	[2.3 Running Batch Jobs on SDSC Systems](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/2.3_running_batch_jobs_sdsc_systems) | [Marty Kandes](https://www.linkedin.com/in/marty-kandes-b53a34144/) |
-| 12:30 PM – 1:30 PM  | Lunch |    |
-| 1:30 PM - 2:50 PM	 |  [2.4 Data Management and File Systems](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/2.4_data_management_and_file_systems) | [Mahidhar Tatineni](https://www.sdsc.edu/research/researcher_spotlight/tatineni_mahidhar.html) |
-| 2:50 PM – 3:00 PM  | Break |    |
-| 3:00 PM – 4:30 PM   |  [2.5  GPU Computing - Hardware architecture and software infrastructure](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/2.5_gpu_computing_hardware_architecture_and_software_infrastructure) | [Andreas Goetz](https://www.sdsc.edu/research/researcher_spotlight/goetz_andreas.html) |
-| 4:30 PM – 5:00 PM   |  Q&A, Wrap-up | All |
-| 5:00 PM – 7:00 PM   |  Evening Reception - 15th Floor, the Village |  |
+| 8:30 AM – 9:30 AM    | 	[2.1 Welcome and Introductions]()|  [Mary Thomas](https://www.sdsc.edu/research/researcher_spotlight/thomas_mary.html)  |
+| 9:30 AM - 10:15 AM | [2.2 Parallel Computing Concepts]()| [Robert Sinkovits](https://www.sdsc.edu/research/researcher_spotlight/sinkovits_robert.html) |\
+| 10:15 AM - 10:30 AM | Break |    |
+| 10:30 AM - 11: 15 AM  | 	[2.3 Getting Started with Batch Job Scheduling]() | [Marty Kandes](https://www.linkedin.com/in/marty-kandes-b53a34144/) |
+| 11:15 AM - 12:30 PM |  [2.4 Data Management and File Systems]() | [Mahidhar Tatineni](https://www.sdsc.edu/research/researcher_spotlight/tatineni_mahidhar.html) |
+| 12:30 PM - 1:30 PM | Lunch |    |
+| 1:30 PM - 3:00 PM  |  [2.5  GPU Computing - Hardware architecture and software infrastructure]() | [Andreas Goetz](https://www.sdsc.edu/research/researcher_spotlight/goetz_andreas.html) |
+| 3:00 PM - 3:15 PM | Break |    |
+| 3:15 PM - 4:45 PM  | 	[2.6 Software Containers for Scientific and High-Performance Computing]() | [Marty Kandes](https://www.linkedin.com/in/marty-kandes-b53a34144/) |
+| 4:45 PM – 5:00 PM   |  Q&A, Wrap-up | All |
+| 5:00 PM - 5:30 PM  |  Q&A, Wrap-up | All |
+| 5:30 PM – 7:00 PM   |  Evening Reception - UC San Diego, Seventh College, 15th Floor |  |
 
 [Back to Top](#top)
 
@@ -57,16 +58,16 @@ All times are in Pacific time.
 | **TIME (Pacific time)**       | **TOPIC** | **PRESENTER** |
 | -------------------- | ----------- | ----------- |
 | 8:00 AM – 8:30 AM  | Light Breakfast & Check-in |    |
-| 8:30 AM – 8:40 AM   |  [3.1 Quick Welcome](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.1_quick_welcome) |   |
-| 8:40 AM – 10:00 AM   | 	[3.2 Introduction to Singularity: Containers for Scientific and <br>High-Performance Computing](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.2_introduction_to_singularity) |  [Marty Kandes](https://www.linkedin.com/in/marty-kandes-b53a34144/)  |
-| 10:00 AM – 10:10 AM |  Break |  |
-| 10:10 AM – 12:10 PM  |  [3.3 CONDA Environments and Jupyter Notebook on Expanse: Scalable & Reproducible Data Exploration and ML](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.3_conda_environments_and_jupyter_notebook_on_expanse) | [Peter Rose](https://www.sdsc.edu/research/researcher_spotlight/rose_peter.html) |
-| 12:10 PM – 1:10 PM |  Lunch |  |
-| 1:10 PM – 1:55 PM |  [3.4 Machine Learning (ML) Overview](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.4_machine_learning_overview) | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
-| 1:55 PM – 2:25 PM |  [3.5 R on HPC Demo](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.5_r_on_hpc_demo) | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
- | 2:25 PM – 2:35 PM  |  Break |  |
-| 2:35 PM – 4:35 PM  |  [3.6 Spark](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.6_spark) | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
- | 4:35 PM – 5:00 PM   |  Q&A, Wrap-up | All |
+| 8:30 AM - 8:45 AM  |  [3.1 Machine Learning (ML) Overview ]() | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
+| 8:45 AM - 10:15 AM | 	[3.2 Introduction to Neural Networks and Convolution Neural Networks]() |   [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
+| 10:15 AM - 10:30 AM |  Break |  |
+| 10:30 AM - 12:00 PM |  [3.3 Practical Guidelines for Training Deep Learning on HPC]() | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
+| 12:00 PM - 1:00 PM |  Lunch |  |
+| 1:00 PM - 1:45 PM |  [3.4 Deep Learning Layers and Architectures]() | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
+| 1:45 PM - 3:15 PM |  [3.5 Deep Learning Transfer Learning]() | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
+| 3:15 PM - 3:30 PM |  Break |  |
+| 3:30 PM - 5:00 PM |  [3.6 Deep Learning – Special Connections]() | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
+| 5:00 PM  |  Q&A, Wrap-up | All |
 
 [Back to Top](#top)
 
@@ -74,17 +75,15 @@ All times are in Pacific time.
 | **TIME (Pacific time)** | **TOPIC** | **PRESENTER** |
 | -------------------- | ----------- | ----------- |
 | 8:00 AM – 8:30 AM  | Light Breakfast & Check-in |    |
-| 8:30 AM – 8:40 AM    |  4.1 Quick Welcome |  |
-| 8:40 AM – 10:00 AM    |  [4.2 Introduction to Neural Networks and Convolution Neural Networks](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/4.2_introduction_to_nn_and_cnn)  | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
- | 10:00 AM – 10:10 AM |  Break |  |
-| 10:10 AM – 11:30 AM   |  [4.3 Practical Guidelines for Training Deep Learning on HPC](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/4.3_practical_guidelines_for_training_deep_learning_on_hpc) | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302)  |
- | 11:30 PM – 12:30 PM |  Lunch |  |
-| 12:30 PM – 1:15 PM |  [4.4 Deep Learning Layers and Architectures](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/4.4_deep_learning_layers_and_architectures) | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
-| 1:15 PM – 1:25 PM	 |  Break  |  |
-| 1:25 PM – 2:55 PM  |  [4.5 Deep Learning Transfer Learning](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/4.5_deep_learning_transfer_learning) | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
-| 2:55 PM - 3:05 PM	 |  Break  |  |
-| 3:05 PM – 4:35 PM    |  [4.6 Deep Learning – Special Connections](https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/4.6_deep_learning_special_connections) | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
-| 4:35 PM – 5:00 PM    | Q&A, wrap-up | |
+| 8:30 AM – 10:00 AM  |  [4.1 CONDA Environments and Jupyter Notebook on Expanse: Scalable & Reproducible]()| [Peter Rose Ph.D.](https://www.sdsc.edu/research/researcher_spotlight/rose_peter.html)
+| 10:00 AM – 10:15 AM |  Break |  |
+| 10:15 AM – 10:45 AM   |  [4.2 R on HPC Demo]() | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302)  |
+| 10:45 AM - 12:15 PM  |  [4.3 Spark]() | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
+| 12:15 PM - 1:15 PM |  Lunch |  |
+| 12:30 PM – 1:15 PM |  [4.4 LLM Overview]() | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
+| 2:15 PM - 2:30 PM	 |  Break  |  |
+| 2:30 PM - 4:30 PM  |  [4.5 LLM Overview]() | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
+| 4:30 PM – 5:00 PM  | Q&A, wrap-up | |
  
  [Back to Top](#top)
   
