@@ -48,8 +48,7 @@ All times are in Pacific time.
 | 1:30 PM - 3:00 PM  |  [2.5  GPU Computing - Hardware architecture and software infrastructure]() | [Andreas Goetz](https://www.sdsc.edu/research/researcher_spotlight/goetz_andreas.html) |
 | 3:00 PM - 3:15 PM | Break |    |
 | 3:15 PM - 4:45 PM  | 	[2.6 Software Containers for Scientific and High-Performance Computing]() | [Marty Kandes](https://www.linkedin.com/in/marty-kandes-b53a34144/) |
-| 4:45 PM – 5:00 PM   |  Q&A, Wrap-up | All |
-| 5:00 PM - 5:30 PM  |  Q&A, Wrap-up | All |
+| 4:45 PM – 5:30 PM   |  Q&A, Wrap-up | All |
 | 5:30 PM – 7:00 PM   |  Evening Reception - UC San Diego, Seventh College, 15th Floor |  |
 
 [Back to Top](#top)
