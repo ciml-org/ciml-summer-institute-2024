@@ -10,6 +10,7 @@ This section contains a set of detailed start-up instructions, beginning with se
 <a name="top">Contents
 * [Expanse User Guide](#expanse-guide)
 * [HPC Systems Accounts](#accounts)
+* [LLM Accounts](#llm-accounts)
 * [Basic Skills](#basic-skills)
 * [Computer Requirements](#comp-req)
 * [Github and Zoom](#Github-Zoom)
@@ -31,6 +32,14 @@ You will need a training account to access SDSC’s Expanse HPC system for the C
 
 An email will be sent from consult@sdsc.edu with the subject line "CIML 2024 Summer Institute: Account Set-Up" that will include your training account username and password and instructions.
 We will send this email in time for  "Prep Day," where we will be covering how to manage your training account, along with other useful information. 
+
+[Back to Top](#top)
+<hr>
+
+##  LLM Accounts: <a name="llm-accounts"></a>
+Each participant will need to sign-up for a free account for the following, which will be used during the LLM sessions on day 3: 
+* ChatGPT: [https://chat.openai.com/auth/login](https://chat.openai.com/auth/login)
+* Gemini:[https://exchange.gemini.com/register]( https://exchange.gemini.com/register)
 
 [Back to Top](#top)
 <hr>
