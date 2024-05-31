@@ -29,7 +29,7 @@ Note: if you have any difficulties getting set up, please contact Institute staf
 ##  HPC Systems Accounts: <a name="accounts"></a>
 You will need a training account to access SDSC’s Expanse HPC system for the CIML Institute. We will be creating this account for you. 
 
-An email will be sent from consult@sdsc.edu with the subject line "CIML 2023 Summer Institute: Account Set-Up" that will include your training account username and password and instructions.
+An email will be sent from consult@sdsc.edu with the subject line "CIML 2024 Summer Institute: Account Set-Up" that will include your training account username and password and instructions.
 We will send this email in time for  "Prep Day," where we will be covering how to manage your training account, along with other useful information. 
 
 [Back to Top](#top)
@@ -63,12 +63,12 @@ There are several basic skills needed in order to access and run jobs on HPC sys
   * For basic GitHub usage on SDSC systems, see here: https://github.com/sdsc-hpc-training-org/basic_skills/tree/master/using_github
  
  ### Zoom:  <a name="zoom"></a>
-* We will be using Zoom for preparation day on Tuesday, June 20, 2023, from 9am-11am (Pacific Time).
+* We will be using Zoom for preparation day on Tuesday, June 18, 2024, from 9am-11am (Pacific Time).
 * You will need to install the latest [Zoom](https://zoom.us/download) client, which is available for Windows, MacOS and Linux. Once installed, you can test your microphone and camera interface with Zoom [here](https://zoom.us/test). You can find more information on Zoom system requirements, including bandwidth requirements [here](https://support.zoom.us/hc/en-us/articles/201362023-System-Requirements-for-PC-Mac-and-Linux).  
 
-Connection details are sent  as a calendar invite to all CIML participants. You should have received an invite for the preparation day on Tuesday, June 20, 2023, from 9am - 11am (Pacific Time). If you did not receive this an invite, please contact cwong@sdsc.edu.
+Connection details are sent  as a calendar invite to all CIML participants. You should have received an invite for the preparation day on Tuesday, June 18, 2024, from 9am - 11am (Pacific Time). If you did not receive this an invite, please contact cwong@sdsc.edu.
 
-Note: While Prep Day is a virtual event, the main CIML Summer Institute sessions (Tuesday, June 27 - Thursday, June 29) will be held in person and will not available remotely.
+Note: While Prep Day is a virtual event, the main CIML Summer Institute sessions (Tuesday, June 25 - Thursday, June 27) will be held in person and will not available remotely.
 
 [Back to Top](#top)
 <hr>
