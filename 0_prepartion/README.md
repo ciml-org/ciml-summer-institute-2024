@@ -10,7 +10,7 @@ This section contains a set of detailed start-up instructions, beginning with se
 <a name="top">Contents
 * [Expanse User Guide](#expanse-guide)
 * [HPC Systems Accounts](#accounts)
-* [Large Language Model(LLM) Accounts](#llm-accounts)
+* [Large Language Model (LLM) Accounts](#llm-accounts)
 * [Basic Skills](#basic-skills)
 * [Computer Requirements](#comp-req)
 * [Github and Zoom](#Github-Zoom)
