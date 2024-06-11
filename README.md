@@ -81,7 +81,7 @@ All times are in Pacific time.
 | 12:15 PM - 1:15 PM |  Lunch |  |
 | 12:30 PM – 1:15 PM |  [4.4 LLM Overview](https://github.com/ciml-org/ciml-summer-institute-2024/tree/main/4.4_and_4.5_LLM_overview) | [Mai Nguyen](https://www.sdsc.edu/research/researcher_spotlight/nguyen_mai.html) |
 | 2:15 PM - 2:30 PM	 |  Break  |  |
-| 2:30 PM - 4:30 PM  |  [4.5 LLM Overview - contintued](https://github.com/ciml-org/ciml-summer-institute-2024/tree/main/4.4_and_4.5_LLM_overview) | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
+| 2:30 PM - 4:30 PM  |  [4.5 LLM Overview - continued](https://github.com/ciml-org/ciml-summer-institute-2024/tree/main/4.4_and_4.5_LLM_overview) | [Paul Rodriguez](https://www.coursera.org/instructor/~13847302) |
 | 4:30 PM – 5:00 PM  | Q&A, wrap-up | |
  
  [Back to Top](#top)
