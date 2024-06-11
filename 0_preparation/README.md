@@ -13,8 +13,9 @@ This section contains a set of detailed start-up instructions, beginning with se
 * [Large Language Model (LLM) Accounts](#llm-accounts)
 * [Basic Skills](#basic-skills)
 * [Computer Requirements](#comp-req)
-* [Github and Zoom](#Github-Zoom)
+* [Github, Slack and Zoom](#Github-Slack-Zoom)
   * [Github](#github)
+  * [Slack](#slack)
   * [Zoom](#zoom)
 
 ## Expanse User Guide <a name="expanse-guide"></a>
@@ -63,15 +64,19 @@ There are several basic skills needed in order to access and run jobs on HPC sys
 [Back to Top](#top)
 <hr>
  
- ##  Github & Zoom <a name="Github-Zoom"></a>
+ ##  GitHub, Slack, and Zoom  <a name="Github-Slack-Zoom"></a>
  
 ### Github: <a name="github"></a>
 * Training material will be located on the CIML Summer Institute [GitHub repo](https://github.com/ciml-org/ciml-summer-institute-2024).
 * One of the hands-on sessions will require a GitHub account.
   * If you do not already have one, you can create a free personal GitHub account [here](https://docs.github.com/en/github/getting-started-with-github/signing-up-for-github/signing-up-for-a-new-github-account). 
   * For basic GitHub usage on SDSC systems, see here: https://github.com/sdsc-hpc-training-org/basic_skills/tree/master/using_github
- 
- ### Zoom:  <a name="zoom"></a>
+
+### Slack:  <a name="slack"></a>
+* We will also be using Slack as our main platform for announcements, where participants can communicate and ask for help. Download ([Windows](https://slack.com/downloads/windows), [MacOS](https://slack.com/downloads/mac), or [Linux](https://slack.com/downloads/linux)) and [get started](https://slack.com/help/articles/218080037-Getting-started-for-new-Slack-users). Zoom chat will be disabled during the preparation day. Make sure to turn on your Slack notifications to receive alerts.
+* See "Preparation Information | CIML Summer Institute 2024" email received for the link to join the Slack workspace for this institute.                     
+
+### Zoom:  <a name="zoom"></a>
 * We will be using Zoom for preparation day on Tuesday, June 18, 2024, from 9am-11am (Pacific Time).
 * You will need to install the latest [Zoom](https://zoom.us/download) client, which is available for Windows, MacOS and Linux. Once installed, you can test your microphone and camera interface with Zoom [here](https://zoom.us/test). You can find more information on Zoom system requirements, including bandwidth requirements [here](https://support.zoom.us/hc/en-us/articles/201362023-System-Requirements-for-PC-Mac-and-Linux).  
 
