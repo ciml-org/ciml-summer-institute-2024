@@ -52,7 +52,8 @@ There are several basic skills needed in order to access and run jobs on HPC sys
 * Connecting to Expanse: https://github.com/sdsc-hpc-training-org/hpc-security/blob/master/connecting-to-hpc-systems/connect-to-expanse.md
 * Basic_Linux_Skills on Expanse: https://github.com/sdsc-hpc-training-org/basic_skills/tree/master/basic_linux_skills_expanse
 * Using Interactive Compute Nodes on [Expanse](https://github.com/sdsc-hpc-training-org/basic_skills/tree/master/interactive_computing)
-* How to Run Notebooks on Expanse: https://github.com/mkandes/galyleo
+* How to Run Notebooks on Expanse: We use a secure notebook launching tool called ```Galyleo```:
+   * Tutorial:  https://github.com/mkandes/galyleo
    * Video on [Running Jupyter Notebooks on Expanse](https://education.sdsc.edu/training/interactive/?id=series-1&from=202206_cimlsi)
 
 [Back to Top](#top)
