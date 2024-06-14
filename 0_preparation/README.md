@@ -40,7 +40,7 @@ We will send this email in time for  "Prep Day," where we will be covering how t
 ##  Large Language Model Accounts: <a name="llm-accounts"></a>
 Each participant will need to sign-up for a free account for the following, which will be used during the LLM sessions on day 3: 
 * ChatGPT: [https://chat.openai.com/auth/login](https://chat.openai.com/auth/login)
-* Gemini:[https://exchange.gemini.com/register]( https://exchange.gemini.com/register)
+* Gemini:[https://gemini.google.com/](https://gemini.google.com/)
 
 [Back to Top](#top)
 <hr>
