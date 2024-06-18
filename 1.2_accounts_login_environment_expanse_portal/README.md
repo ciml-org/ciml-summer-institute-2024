@@ -94,20 +94,35 @@
       srun: job 31426273 has been allocated resources
       [train111@exp-9-55 ~]$ hostname
       exp-9-55
-      [train111@exp-9-55 ~]$
+      [train111@exp-9-55 ~]$ exit
+       [train111@login02 ~]$
      ```
     
    * Exercise 4: create an interactive GPU node
      The following example will request a GPU node, 10 cores, 1 GPU and 96G  in the debug partition for 30 minutes.  To ensure the GPU environment is properly loaded, please be sure run both the module purge and module restore commands.
 
        ```
-      [train111@exp-9-55 ~]$ hostname
+       [train111@login02 ~]$ hostname
       login02
       login02$ srun --partition=gpu-debug --pty --account=gue998 --ntasks-per-node=10 
        --nodes=1 --mem=96G --gpus=1 -t 00:30:00 --wait=0 --export=ALL /bin/bash
        ```
+       
    * Exercise 5: compile the MPI Hello World code.
-      ```cd hpctr-examples/mpi``
+     
+     ```
+     cd hpctr-examples/mpi 
+     [train111@login02 mpi]$ module purge
+     [train111@login02 mpi]$ module load slurm
+     [train111@login02 mpi]$ module load cpu/0.15.4  
+     [train111@login02 mpi]$ module load gcc/10.2.0
+     [train111@login02 mpi]$ module load openmpi/4.0.4
+     [train111@login02 mpi]$ mpif90 -o hello_mpi hello_mpi.f90
+     [train111@login02 mpi]$ 
+     [train111@login02 mpi]$ mpicc -o mpi_hello mpi_hello.c
+     [train111@login02 mpi]$ ll mpi_hello
+     -rwxr-xr-x 1 train111 gue998 18120 Jun 17 23:22 mpi_hello
+     ```
 
    * Exercise 6: Log onto the Expanse User Portal:
    Use your training account and password
