@@ -22,13 +22,13 @@
      https://github.com/sdsc-hpc-training-org/hpctr-examples
      ```
 
+[Back to Top](#top)
+* ** Exercises:**
 
-### Exercises:
+   * Log onto Expanse
+   Use your training account and password
 
-* **Log onto Expanse**
-Use your training account and password
-
-```
+   ```
 quantum:ciml accountname$ ssh -Y train111@login.expanse.sdsc.edu
 (train111@login.expanse.sdsc.edu) Password: 
 Welcome to Bright release         9.0
@@ -50,14 +50,14 @@ Use the following commands to adjust your environment:
 Last login: Mon Jun 17 19:18:38 2024 from 75.80.45.222
 connect /private/tmp/com.apple.launchd.HbagVgBfXZ/org.xquartz:0: Connection refused
 [train111@login02 ~]$ 
-```
+   ```
 
 
  
-* Log onto the Expanse User Portal:
-Use your training account and password
+   * Log onto the Expanse User Portal:
+   Use your training account and password
 
-```
+   ```
 https://portal.expanse.sdsc.edu/training
-``
+   ```
 [Back to Top](#top)
