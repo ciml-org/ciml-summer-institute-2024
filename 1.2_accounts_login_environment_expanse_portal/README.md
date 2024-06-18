@@ -106,7 +106,10 @@
       login02$ srun --partition=gpu-debug --pty --account=gue998 --ntasks-per-node=10 
        --nodes=1 --mem=96G --gpus=1 -t 00:30:00 --wait=0 --export=ALL /bin/bash
        ```
-   * Exercise 4: Log onto the Expanse User Portal:
+   * Exercise 5: compile the MPI Hello World code.
+      ```cd hpctr-examples/mpi``
+
+   * Exercise 6: Log onto the Expanse User Portal:
    Use your training account and password
 
        ```
