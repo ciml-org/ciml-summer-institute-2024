@@ -85,8 +85,23 @@
    -rw-r--r--  1 train111 gue998  5772 Jun 17 22:35 README.md
    [train111@login02 ~]$ 
    ```
-     
-   * Exercise 1: Log onto the Expanse User Portal:
+
+   * Exercise x: create and interactive CPU node
+     The following example will request one regular compute node, 4 cores,  in the debug partition for 30 minutes.
+     ```
+      [train111@exp-9-55 ~]$ hostname
+      login02
+      [train111@login02 ~]$ srun --partition=debug  --pty --account=gue998 --nodes=1 --ntasks-per-node=4 --mem=8G -t 00:30:00 --wait=0 --export=ALL /bin/bash
+      srun: job 31426273 queued and waiting for resources
+      srun: job 31426273 has been allocated resources
+      [train111@exp-9-55 ~]$ hostname
+      exp-9-55
+      [train111@exp-9-55 ~]$
+    ```
+    
+   * Exercise x: create and interactive GPU node
+
+   * Exercise x: Log onto the Expanse User Portal:
    Use your training account and password
 
    ```
