@@ -34,6 +34,13 @@ You will need a training account to access SDSC’s Expanse HPC system for the C
 An email will be sent from consult@sdsc.edu with the subject line "CIML 2024 Summer Institute: Account Set-Up" that will include your training account username and password and instructions.
 We will send this email in time for  "Prep Day," where we will be covering how to manage your training account, along with other useful information. 
 
+As a reminder, we are asking all attendees to use the training accounts that we are providing, even if you already have your own account. This will minimize problems related to custom configurations (e.g. environment variables, choice of shell, etc.) that may cause some of the hands-on examples to break. 
+
+This training account may be used:
+  * Via SSH directly to login.expanse.sdsc.edu
+  * Via a special page on the Expanse Portal: https://portal.expanse.sdsc.edu/training
+  * * For this institute, please do not use portal.expanse.sdsc.edu.
+
 [Back to Top](#top)
 <hr>
 
