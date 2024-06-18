@@ -1,12 +1,12 @@
 # CIML Summer Institute:   Accounts, Login, Environments, Running Jobs, Logging into Expanse User Portal
 
-**SESSION:** 1.2_accounts_login_environments_running_jobs_expanse_portal
+## Session: 1.2_accounts_login_environments_running_jobs_expanse_portal
 
-**DATE:**  Tuesday, June 18, 2024
+**Date:**  Tuesday, June 18, 2024
 
-**PRESENTED BY:** [Mary Thomas](https://www.sdsc.edu/research/researcher_spotlight/thomas_mary.html )  ( mpthomas  @  ucsd.edu ) 
+**Presented by:** [Mary Thomas](https://www.sdsc.edu/research/researcher_spotlight/thomas_mary.html )  ( mpthomas  @  ucsd.edu ) 
 
-**TITLE:** Expanse Webinar:  Accessing and Running Jobs on Expanse
+**Title:** Expanse Webinar:  Accessing and Running Jobs on Expanse
 
 ### Reading and Presentations:
 * **Lecture material:**
