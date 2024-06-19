@@ -74,8 +74,7 @@ Review the Parallel Efficiency plot. How well does Dask scale for this example?
 -----
 
 ## TASK 4: Run a Jupyter Notebook in Batch
-In this task you learn how to parameterize a notebook and run it in batch. This batch job compares the runtime using `csv` vs. `parquet` files for 4 dataframe libraries: Pandas (1 CPU), Dask (8 CPUs), Spark(8 
- CPUs), Cuda (1 GPU).
+In this task you learn how to parameterize a notebook and run it in batch. This batch job compares the runtime using `csv` vs. `parquet` files for 4 dataframe libraries: Pandas (1 CPU), Dask (8 CPUs), Spark (8 CPUs), Cuda (1 GPU).
 
 1. Parameterize the dataframe notebook
 ```
