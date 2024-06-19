@@ -27,10 +27,10 @@ git clone https://github.com/sbl-sdsc/df-parallel.git
 
    This script will generate a URL for your Jupyter Lab session.
 ```
-galyleo launch --account ${CIML23_ACCOUNT} --reservation ${CIML23_RES_GPU} --qos ${CIML23_QOS_GPU} --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 01:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment-gpu.yml" --mamba
+galyleo launch --account ${CIML24_ACCOUNT} --reservation ${CIML24_RES_GPU} --qos ${CIML24_QOS_GPU} --partition gpu-shared --cpus 10 --memory 92 --gpus 1 --time-limit 01:30:00 --conda-env df-parallel-gpu --conda-yml "${HOME}/df-parallel/environment-gpu.yml" --mamba --quiet
 ```
 
-> The arguments ```--reservation ${CIM23_RES_GPU} --qos ${CIM23_QOS_GPU}``` are only active during the CIML workshop. Remove these arguments when running this example outside of the workshop and specify your project account number.
+> The arguments ```--reservation ${CIM24_RES_GPU} --qos ${CIM24_QOS_GPU}``` are only active during the CIML workshop. Remove these arguments when running this example outside of the workshop and specify your project account number.
 
 4. Open a new tab in your web browser and paste the Jupyter Lab URL.  
 
@@ -47,7 +47,7 @@ For this task you will compare the runtime for a simple data analysis using 5 da
 
 2. Copy a dataset to the local scratch disk on the GPU node
 
-    Run the ```1-FetchDataCIML2023.ipynb``` notebook
+    Run the ```1-FetchDataLocalData.ipynb``` notebook
 
 3. Run the Dataframe notebooks
 
@@ -74,7 +74,8 @@ Review the Parallel Efficiency plot. How well does Dask scale for this example?
 -----
 
 ## TASK 4: Run a Jupyter Notebook in Batch
-In this task you learn how to parameterize a notebook and run it in batch.
+In this task you learn how to parameterize a notebook and run it in batch. This batch job you will compare the runtime for using `csv` with `parquet` files for 4 dataframe libraries: Pandas (1 CPU), Dask (8 CPUs), Spark(8 
+ CPUs), Cuda (1 GPU).
 
 1. Parameterize the dataframe notebook
 ```
@@ -99,20 +100,27 @@ The dataframe notebooks in this repo have already been parameterized, however to
 2. Edit the ```problem.sh``` batch script. Look at the bottom of the file for instructions.
    - Add a papermill statement for each dataframe notebook to use the ```parquet``` file_format and save the executed notebook in the ```${RESULT_DIR}```
 
-   > You can check the solution.sh script to make sure you got this correct
+   > Check your script by comparing it with the solution.sh script.
 
-3. Submit the ```problem.sh``` batch script using ```sbatch```
+3. Shutdown Jupyter Lab!
 
-4. Monitor the progress of the job in the Expanse Portal
+    ```File -> Shutdown``` to terminate the process
+
+   > It is important to Shutdown Jupyter Lab now! Otherwise we will be running out of available GPUs for the next step.
+
+4. Change directory to ```df-parallel```
+   
+5. Submit the ```problem.sh``` batch script using ```sbatch```
+
+6. Monitor the progress of the job in the Expanse Portal
 
    > This jobs takes about 5 minutes to complete
 
-5. When the job has completed, navigate to the results directory in Jupyter Lab. Write down the runtimes for using the ```parquet``` formats.
+7. When the job has completed, review the benchmark results in the file: `df-parallel/notebooks/results/benchmark.csv`.
 
-   > The executed notebooks are in the notebooks/results directory
+   > Which dataframe libraries perform the best?
+   
+   > Which file format is most efficient?
 
-6. Shutdown Jupyter Lab
-
-    ```File -> Shutdown``` to terminate the process  
 
 [Back to Top](#top)
