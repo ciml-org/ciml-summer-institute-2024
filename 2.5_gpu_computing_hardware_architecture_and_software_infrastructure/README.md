@@ -8,7 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
-   * Presentation Slides:
+   * Presentation Slides: [GPU Computing - Hardware Architecture and Software Infrastructure](./CIML-SI24-GPU-Computing.pdf)
 * **Source Code/Examples:** [Nvidia CUDA Samples](https://github.com/NVIDIA/cuda-samples)
 
 ### TASKS:
