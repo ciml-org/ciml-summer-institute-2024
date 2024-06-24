@@ -13,7 +13,7 @@
 
 ### TASKS:
 
-Well will log into an Expanse GPU node, compile and test some examples from the Nvidia CUDA samples.
+We will log into an Expanse GPU node, compile and test some examples from the Nvidia CUDA samples.
 
 ### Log into Expanse, get onto a shared GPU node, and load required modules
 
@@ -27,21 +27,18 @@ Next we will use the alias for the `srun` command that is defined in your `.bash
 srun-gpu-shared
 ```
 
-Once we are on a GPU node, we load the default modules for the GPU nodes to gain access to the GPU software stack. We will also load the CUDA toolkit and the NVIDIA HPC SDK:
+Once we are on a GPU node, we load the default modules for the GPU nodes to gain access to the GPU software stack. We will also load the CUDA toolkit:
 ```
 module reset
-module load cuda11.7/toolkit
-module load nvhpc/21.9
+module load cuda12.2/toolkit
 module list
 ```
 You should see following output
 ```
 
 Currently Loaded Modules:
-  1) shared                      5) DefaultModules
-  2) gpu/0.17.3b           (g)   6) cuda11.7/toolkit/11.7.1
-  3) slurm/expanse/21.08.8       7) nvhpc/21.9/4xco23d
-  4) sdsc/1.0
+  1) shared            3) slurm/expanse/23.02.7   5) DefaultModules
+  2) gpu/0.17.3b (g)   4) sdsc/1.0                6) cuda12.2/toolkit/12.2.2
 
   Where:
    g:  built natively for Intel Skylake
@@ -83,7 +80,7 @@ We will first copy the Nvidia CUDA samples from the shared CIML Summer Institute
 Instead of using the home directory we will use the node-local scratch directory. Data in this directory will be purged upon job completion but this is OK as we do not need to retain the toolkit samples. Working in the the scratch directory will be very fast. This is also important when you operate with datasets and/or have heavy I/O during your ML applications.
 ```
 cd /scratch/$USER/job_$SLURM_JOB_ID
-tar xvf $CIML23_DATA_DIR/cuda-samples-v11.6.tar.gz
+tar xvf $CIML24_DATA_DIR/cuda-samples-v12.2.tar.gz
 ```
 You can look into the data directory to see if there other samples that are of interest to you. The CUDA samples have been obtained from [Nvidia's Github repository](https://github.com/nvidia/cuda-samples).
 
@@ -102,16 +99,16 @@ nvcc --version
 should give the following output
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2022 NVIDIA Corporation
-Built on Wed_Jun__8_16:49:14_PDT_2022
-Cuda compilation tools, release 11.7, V11.7.99
-Build cuda_11.7.r11.7/compiler.31442593_0
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Tue_Aug_15_22:02:13_PDT_2023
+Cuda compilation tools, release 12.2, V12.2.140
+Build cuda_12.2.r12.2/compiler.33191640_0
 ```
 
-We have version 11.7 installed so we are good to go. 
+We have version 12.2 installed so we are good to go. 
 We can now move into the `device_query` source directory and compile the code with the `make` command.
 ```
-cd cuda-samples-11.6/Samples/1_Utilities/deviceQuery
+cd cuda-samples-12.2/Samples/1_Utilities/deviceQuery
 make
 ```
 
@@ -174,7 +171,7 @@ It is instructive to look at two different matrix multiplication examples and co
 
 First we will look at a hand-written matrix multiplication. This implementation features several performance optimizations such as minimize data transfer from GPU RAM to the GPU processors and increase floating point performance.
 ```
-cd cuda-samples-11.6/Samples/0_Introduction/matrixMul
+cd cuda-samples-12.2/Samples/0_Introduction/matrixMul
 make
 ```
 We now have the executable `matrixMul` available. If we execute it,
@@ -199,7 +196,7 @@ NOTE: The CUDA Samples are not meant for performance measurements. Results may v
 
 Finally, let us look at a matrix multiplication that uses Nvidia's CUBLAS library, which is a highly optimized version of the Basic Linear Algebra System for Nvidia GPUs.
 ```
-cd cuda-samples-11.6/Samples/4_CUDA_Libraries/matrixMulCUBLAS
+cd cuda-samples-12.2/Samples/4_CUDA_Libraries/matrixMulCUBLAS
 make
 ```
 If we run the executable
