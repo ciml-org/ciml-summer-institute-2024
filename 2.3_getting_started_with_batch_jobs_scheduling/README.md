@@ -9,6 +9,7 @@
 ### Reading and Presentations:
 * **Lecture material:**
    * https://education.sdsc.edu/training/interactive/?id=202403-Batch-Computing-Part-1
+   * https://github.com/sdsc-complecs/batch-computing
 * **Source Code/Examples:** N/A
 
 ### TASKS: None at this time.
