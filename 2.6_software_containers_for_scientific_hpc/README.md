@@ -10,6 +10,11 @@
 * **Lecture material:**
     - https://jupyter-docker-stacks.readthedocs.io/en/latest/
 * **Source Code/Examples:**
+
+Download a container from a Docker registry.
+  ```
+  singularity build docker://quay.io/jupyter/scipy-notebook:2024-05-27
+  ```
     
 ### TASKS: None at this time.
 
