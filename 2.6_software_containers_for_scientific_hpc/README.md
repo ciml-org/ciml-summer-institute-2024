@@ -8,6 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
+* https://github.com/ciml-org/ciml-summer-institute-2023/tree/main/3.2_introduction_to_singularity
 * **Presentation slides:**
 ### TASKS: None at this time.
 
