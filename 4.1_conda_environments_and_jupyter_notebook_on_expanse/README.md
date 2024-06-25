@@ -96,7 +96,7 @@ The dataframe notebooks in this repo have already been parameterized, however to
    - Save the notebook
 
 
-2. Edit the ```problem.sh``` batch script in the ```df-parallel directory```). Look at the bottom of the file for instructions.
+2. Edit the ```problem.sh``` batch script in the ```df-parallel directory```. Look at the bottom of the file for instructions.
    - Add a papermill statement for each dataframe notebook to use the ```parquet```  and ```csv``` file_format and save the executed notebook in the ```${RESULT_DIR}```
 
    > Check your script by comparing it with the solution.sh script.
