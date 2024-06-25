@@ -8,7 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
-   * [Presentation slides](./CIML_4.1.pdf)
+   * [Presentation slides](https://github.com/ciml-org/ciml-summer-institute-2024/blob/main/4.1_conda_environments_and_jupyter_notebook_on_expanse/CIML_4.1_2024.pdf)
 * **Source Code/Examples:** [df-parallel](https://github.com/sbl-sdsc/df-parallel.git)
 
 -----
