@@ -8,6 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
+   * https://www.sdsc.edu/support/user_guides/expanse.html
    * https://education.sdsc.edu/training/interactive/?id=202403-Batch-Computing-Part-1
    * https://github.com/sdsc-complecs/batch-computing
    * https://github.com/sdsc/sdsc-summer-institute-2023/tree/main/3.5_high_throughput_computing
