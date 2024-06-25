@@ -1,0 +1,14 @@
+name: pytorch-gpu
+
+channels:
+  - defaults
+  - pytorch
+  - nvidia
+
+dependencies:
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  - jupyterlab
+  - conda-forge::opencv
