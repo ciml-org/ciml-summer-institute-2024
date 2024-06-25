@@ -13,7 +13,7 @@
 
 Download a container from a Docker registry.
   ```
-  singularity build docker://quay.io/jupyter/scipy-notebook:2024-05-27
+  singularity build scipy-notebook.sif docker://quay.io/jupyter/scipy-notebook:2024-05-27
   ```
     
 ### TASKS: None at this time.
