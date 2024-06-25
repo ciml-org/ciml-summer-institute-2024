@@ -8,7 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
-   * Presentation Slides: will be made available closer to the session
+   * https://education.sdsc.edu/training/interactive/?id=202403-Batch-Computing-Part-1
 * **Source Code/Examples:** N/A
 
 ### TASKS: None at this time.
