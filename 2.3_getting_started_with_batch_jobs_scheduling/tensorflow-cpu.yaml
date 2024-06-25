@@ -1,0 +1,12 @@
+name: tensorflow-cpu
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - tensorflow=2.16.1=cpu_py312hfe0d8c0_0
+  - jupyterlab
+  - opencv
+  - pip:
+      - tf-keras~=2.16
