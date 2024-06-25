@@ -9,6 +9,7 @@
 ### Reading and Presentations:
 * **Lecture material:**
    * https://education.sdsc.edu/training/interactive/?id=202406-Data-Transfer
+   * https://github.com/sdsc/sdsc-summer-institute-2022/tree/main/2.5_data_management
 * **Source Code/Examples:** N/A
 
 ### TASKS: None at this time.
