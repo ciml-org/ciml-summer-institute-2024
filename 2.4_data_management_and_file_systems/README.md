@@ -8,7 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
-   * Presentation Slides: will be made available closer to the session
+   * https://education.sdsc.edu/training/interactive/?id=202406-Data-Transfer
 * **Source Code/Examples:** N/A
 
 ### TASKS: None at this time.
