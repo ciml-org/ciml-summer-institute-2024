@@ -8,7 +8,7 @@
 
 ### Reading and Presentations:
 * **Lecture material:**
-   * Presentation slides:
+   * [Presentation slides](./CIML_4.1.pdf)
 * **Source Code/Examples:** [df-parallel](https://github.com/sbl-sdsc/df-parallel.git)
 
 -----
