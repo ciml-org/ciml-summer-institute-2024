@@ -31,4 +31,4 @@ export UCX_NET_DEVICES='mlx5_0:1'
 export UCX_MAX_RNDV_RAILS=1
 printenv
 
-time -p mpirun -n "${SLURM_NTASKS}" singularity exec --nv "${SINGULARITY_CONTAINER_DIR}/tensortflow-latest.sif" python3 -u hvd-tf2-train-cnn-cifar.py
+time -p mpirun -n "${SLURM_NTASKS}" singularity exec --nv "${SINGULARITY_CONTAINER_DIR}/tensorflow/tensortflow-latest.sif" python3 -u hvd-tf2-train-cnn-cifar.py
