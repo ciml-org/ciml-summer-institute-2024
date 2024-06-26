@@ -1,0 +1,30 @@
+#1 Request a GPU node
+#use jupyter alias for gpushared.. but don't get into notebook
+
+#2 ssh into that node
+squeue -u $USER     
+ssh exp-X-X
+
+#Note: X-X should be the expanse node id numbers
+
+#3 Load modules 
+
+module load gpu
+module load slurm
+module load singularitypro/3.11
+
+#4 Run singularity shellù command
+
+singularity shell --nv /cm/shared/apps/containers/singularity/pytorch/pytorch-latest.sif
+
+#5 Run  pip install command
+
+pip install git+https://github.com/Imageomics/pybioclip  --prefix=/home/p4rodrig/Local_BioClip
+
+#6 set up paths
+
+export PYTHONPATH=/home/$USER/Local_BioClip/local/lib/python3.10/dist-packages/
+export PATH=/home/$USER/Local_BioClip/local/bin:$PATH
+
+#7 Run your script
+python3 run_bc.py
