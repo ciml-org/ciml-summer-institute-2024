@@ -1,0 +1,602 @@
+Compiling Codes
+Expanse CPU nodes have GNU, Intel, and AOCC (AMD) compilers available along with multiple MPI implementations (OpenMPI, MVAPICH2, and IntelMPI). The majority of the applications on Expanse have been built using gcc/10.2.0 which features AMD Rome specific optimization flags (-march=znver2). Users should evaluate their application for best compiler and library selection. GNU, Intel, and AOCC compilers all have flags to support Advanced Vector Extensions 2 (AVX2). Using AVX2, up to eight floating point operations can be executed per cycle per core, potentially doubling the performance relative to non-AVX2 processors running at the same clock speed. Note that AVX2 support is not enabled by default and compiler flags must be set as described below.
+
+Expanse GPU nodes have GNU, Intel, and PGI compilers available along with multiple MPI implementations (OpenMPI, IntelMPI, and MVAPICH2). The gcc/10.2.0, Intel, and PGI compilers have specific flags for the Cascade Lake architecture. Users should evaluate their application for best compiler and library selections.
+
+Note that the login nodes are not the same as the GPU nodes, therefore all GPU codes must be compiled by requesting an interactive session on the GPU nodes.
+
+Using AMD Compilers
+The AMD Optimizing C/C++ Compiler (AOCC) is only available on CPU nodes. AMD compilers can be loaded by executing the following commands at the Linux prompt:
+
+module load aocc
+
+For more information on the AMD compilers: [flang | clang ] -help
+
+Serial	MPI	OpenMP	MPI+OpenMP
+Fortran
+
+flang
+
+mpif90
+
+ifort -mp
+
+mpif90 -fopenmp
+
+C
+
+clang
+
+mpiclang
+
+icc -lomp
+
+mpicc -fopenmp
+
+C++
+
+clang++
+
+mpiclang
+
+icpc -lomp
+
+mpicxx -fopenmp
+
+Using the Intel Compilers
+The Intel compilers and the MVAPICH2 MPI compiler wrappers can be loaded by executing the following commands at the Linux prompt:
+
+module load intel mvapich2
+
+For AVX2 support, compile with the -march=core-avx2 option. Note that this flag alone does not enable aggressive optimization, so compilation with -O3 is also suggested.
+
+Intel MKL libraries are available as part of the "intel" modules on Expanse. Once this module is loaded, the environment variable INTEL_MKLHOME points to the location of the mkl libraries. The MKL link advisor can be used to ascertain the link line (change the INTEL_MKLHOME aspect appropriately).
+
+For example to compile a C program statically linking 64 bit scalapack libraries on Expanse:
+
+mpicc -o pdpttr.exe pdpttr.c \
+    -I$INTEL_MKLHOME/mkl/include \
+    ${INTEL_MKLHOME}/mkl/lib/intel64/libmkl_scalapack_lp64.a \
+    -Wl,--start-group ${INTEL_MKLHOME}/mkl/lib/intel64/libmkl_intel_lp64.a \
+    ${INTEL_MKLHOME}/mkl/lib/intel64/libmkl_core.a \
+    ${INTEL_MKLHOME}/mkl/lib/intel64/libmkl_sequential.a \
+    -Wl,--end-group ${INTEL_MKLHOME}/mkl/lib/intel64/libmkl_blacs_intelmpi_lp64.a \
+    -lpthread -lm
+
+For more information on the Intel compilers: [ifort | icc | icpc] -help
+
+Serial
+
+MPI
+
+OpenMP
+
+MPI+OpenMP
+
+Fortran
+
+ifort
+
+mpif90
+
+ifort -qopenmp
+
+mpif90 -qopenmp
+
+C
+
+icc
+
+mpicc
+
+icc -qopenmp
+
+mpicc -qopenmp
+
+C++
+
+icpc
+
+mpicxx
+
+icpc -qopenmp
+
+mpicxx -qopenmp
+
+Using the PGI Compilers
+The PGI compilers are only available on the GPU nodes, and can be loaded by executing the following commands at the Linux prompt
+
+module load pgi
+
+Note that the openmpi build is integrated into the PGI install so the above module load provides both PGI and openmpi.
+
+For AVX support, compile with -fast.
+
+For more information on the PGI compilers: man [pgf90 | pgcc | pgCC]
+
+Serial
+
+MPI
+
+OpenMP
+
+MPI+OpenMP
+
+Fortran
+
+pgf90
+
+mpif90
+
+pgf90 -mp
+
+mpif90 -mp
+
+C
+
+pgcc
+
+mpicc
+
+pgcc -mp
+
+mpicc -mp
+
+C++
+
+pgCC
+
+mpicxx
+
+pgCC -mp
+
+mpicxx -mp
+
+Using the GNU Compilers
+The GNU compilers can be loaded by executing the following commands at the Linux prompt:
+
+module load gcc openmpi
+
+For AVX support, compile with -march=core-avx2. Note that AVX support is only available in version 4.7 or later, so it is necessary to explicitly load the gnu/4.9.2 module until such time that it becomes the default.
+
+For more information on the GNU compilers: man [gfortran | gcc | g++]
+
+Serial
+
+MPI
+
+OpenMP
+
+MPI+OpenMP
+
+Fortran
+
+gfortran
+
+mpif90
+
+gfortran -fopenmp
+
+mpif90 -fopenmp
+
+C
+
+gcc
+
+mpicc
+
+gcc -fopenmp
+
+mpicc -fopenmp
+
+C++
+
+g++
+
+mpicxx
+
+g++ -fopenmp
+
+mpicxx -fopenmp
+
+Notes and Hints
+The mpif90, mpicc, and mpicxx commands are actually wrappers that call the appropriate serial compilers and load the correct MPI libraries. While the same names are used for the Intel, PGI and GNU compilers, keep in mind that these are completely independent scripts.
+If you use the PGI or GNU compilers or switch between compilers for different applications, make sure that you load the appropriate modules before running your executables.
+When building OpenMP applications and moving between different compilers, one of the most common errors is to use the wrong flag to enable handling of OpenMP directives. Note that Intel, PGI, and GNU compilers use the -qopenmp, -mp, and -fopenmp flags, respectively.
+Explicitly set the optimization level in your makefiles or compilation scripts. Most well written codes can safely use the highest optimization level (-O3), but many compilers set lower default levels (e.g. GNU compilers use the default -O0, which turns off all optimizations).
+Turn off debugging, profiling, and bounds checking when building executables intended for production runs as these can seriously impact performance. These options are all disabled by default. The flag used for bounds checking is compiler dependent, but the debugging (-g) and profiling (-pg) flags tend to be the same for all major compilers.
+Back to top
+
+Running Jobs on Expanse
+Expanse uses the Simple Linux Utility for Resource Management (SLURM) batch environment. When you run in the batch mode, you submit jobs to be run on the compute nodes using the sbatch command as described below. Remember that computationally intensive jobs should be run only on the compute nodes and not the login nodes.
+
+Expanse places limits on the number of jobs queued and running on a per group (allocation) and partition basis. Please note that submitting a large number of jobs (especially very short ones) can impact the overall  scheduler response for all users. If you are anticipating submitting a lot of jobs, please contact the SDSC consulting staff before you submit them. We can work to check if there are bundling options that make your workflow more efficient and reduce the impact on the scheduler.
+
+The limits for each partition are noted in the table below. Partition limits are subject to change based on Early User Period evaluation.
+
+Partition Name	Max
+Walltime	Max
+Nodes/Job	Max
+Running
+Jobs	Max Running
++ Queued Jobs	Charge
+Factor	Notes
+compute	48 hrs	32	32	64	1	Exclusive access to regular compute nodes; limit applies per group
+ind-compute	48 hrs	32	16	32	1	Exclusive access to Industry compute nodes; limit applies per group
+shared	48 hrs	1	4096	4096	1	Single-node jobs using fewer than 128 cores
+ind-shared	48 hrs	1	2048	2048	1	Single-node Industry jobs using fewer than 128 cores
+gpu	48 hrs	4	4	8 (32 Tres GPU)	1	Used for exclusive access to the GPU nodes
+ind-gpu	48 hrs	4	4	4 (8 Tres GPU)	1	Exclusive access to the Industry GPU nodes
+gpu-shared	48 hrs	1	24	24 (24 Tres GPU)	1	Single-node job using fewer than 4 GPUs
+ind-gpu-shared	48 hrs	1	24	24 (24 Tres GPU)	1	Single-node job using fewer than 4 Industry GPUs
+large-shared	48 hrs	1	1	4	1	Single-node jobs using large memory up to 2 TB (minimum memory required 256G)
+debug	30 min	2	1	2	1	Priority access to shared nodes set aside for testing of jobs with short walltime and limited resources
+gpu-debug	30 min	2	1	2	1	Priority access to gpu-shared nodes set aside for testing of jobs with short walltime and limited resources; max two gpus per job
+preempt	7 days	32		128	.8	Non-refundable discounted jobs to run on free nodes that can be pre-empted by jobs submitted to any other queue
+gpu-preempt	7 days	1		24 (24 Tres GPU)	.8	Non-refundable discounted jobs to run on unallocated nodes that can be pre-empted by higher priority queues
+Requesting interactive resources using srun
+You can request an interactive session using the srun command. The following example will request one regular compute node, 4 cores,  in the debug partition for 30 minutes.
+
+srun --partition=debug  --pty --account=<<project>> --nodes=1 --ntasks-per-node=4 \
+    --mem=8G -t 00:30:00 --wait=0 --export=ALL /bin/bash
+
+The following example will request a GPU node, 10 cores, 1 GPU and 96G  in the debug partition for 30 minutes.  To ensure the GPU environment is properly loaded, please be sure run both the module purge and module restore commands.
+
+login01$ srun --partition=gpu-debug --pty --account=<<project>> --ntasks-per-node=10 \
+    --nodes=1 --mem=96G --gpus=1 -t 00:30:00 --wait=0 --export=ALL /bin/bash
+srun: job 1336890 queued and waiting for resources
+srun: job 1336890 has been allocated resources
+exp-7-59$ module purge
+exp-7-59$ module restore
+Resetting modules to system default. Resetting $MODULEPATH back to system default.
+    All extra directories will be removed from $MODULEPATH.
+
+Submitting Jobs Using sbatch
+Jobs can be submitted to the sbatch partitions using the sbatch command as follows:
+
+ sbatch jobscriptfile
+
+where jobscriptfile is the name of a UNIX format file containing special statements (corresponding to sbatch options), resource specifications and shell commands. Several example SLURM scripts are given below:
+
+Basic MPI Job
+#!/bin/bash
+#SBATCH --job-name="hellompi"
+#SBATCH --output="hellompi.%j.%N.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=128
+#SBATCH --mem=0 
+#SBATCH --account=<<project*>>
+#SBATCH --export=ALL
+#SBATCH -t 01:30:00
+
+#This job runs with 2 nodes, 128 cores per node for a total of 256 tasks.
+
+module purge
+module load cpu
+#Load module file(s) into the shell environment
+module load gcc
+module load mvapich2
+module load slurm
+
+srun --mpi=pmi2 -n 256 ../hello_mpi
+
+Expanse requires users to enter a valid project name; users can list valid project by running the expanse-client script.
+Expanse requires users to include memory ,  by using --mem=0 for compute partition the job will be allocated all the avialble memory on the node
+Basic OpenMP Job
+#!/bin/bash
+#SBATCH --job-name="hello_openmp"
+#SBATCH --output="hello_openmp.%j.%N.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=249000M
+#SBATCH --account=<<project*>>
+#SBATCH --export=ALL
+#SBATCH -t 01:30:00
+
+module purge 
+module load cpu
+module load slurm
+module load gcc
+module load openmpi
+
+#SET the number of openmp threads
+export OMP_NUM_THREADS=24
+
+#Run the job
+./hello_openmp
+
+* Expanse requires users to enter a valid project name; users can list valid project by running the expanse-client script.
+
+Hybrid MPI-OpenMP Job
+#!/bin/bash
+#SBATCH --job-name="hellohybrid"
+#SBATCH --output="hellohybrid.%j.%N.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=128
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=249000M
+#SBATCH --account=<<project*>>
+#SBATCH --export=ALL
+#SBATCH -t 01:30:00
+
+#This job runs with 1 node, 128 cores per node for a total of 128 cores.
+# We use 8 MPI tasks and 16 OpenMP threads per MPI task
+
+module purge 
+module load cpu
+module load slurm
+module load intel
+module load intel-mpi
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+mpirun -genv I_MPI_PIN_DOMAIN=omp:compact ./hello_hybrid
+* Expanse require users to enter a valid project name; users can list valid project by running the expanse-client script.
+
+Using the Shared Partition
+#!/bin/bash
+#SBATCH -p shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --mem=40G
+#SBATCH -t 01:00:00
+#SBATCH -J job.8
+#SBATCH -A <<project*>>
+#SBATCH -o job.8.%j.%N.out
+#SBATCH -e job.8.%j.%N.err
+#SBATCH --export=ALL
+
+export SLURM_EXPORT_ENV=ALL
+
+module purge
+module load cpu
+module load gcc
+module load mvapich2
+module load slurm
+
+srun -n 8 ../hello_mpi
+
+* Expanse requires users to enter a valid project name; users can list valid project by running the expanse-client script.
+
+The above script will run using 8 cores and 40 GB of memory. Please note that the performance in the shared partition may vary depending on how sensitive your application is to memory locality and the cores you are assigned by the scheduler. It is possible the 8 cores will span two sockets for example.
+
+Using Large Memory Nodes
+The large memory nodes can be accessed via the "large-shared" partition. Charges are based on either the number of cores or the fraction of the memory requested, whichever is larger. By default the system will only allocate 1 GB of memory per core. If additional memory is required, users should explicitly use the --mem directive.   
+
+For example, on the "large-shared" partition, the following job requesting 128 cores and 2000 GB of memory (about 100% of 2TB of one node's available memory) for 1 hour will be charged 1024 SUs:
+
+200/1455(memory) * 64(cores) * 1(duration) ~= 1024
+
+#SBATCH --partition=large-shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=128
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2055638M
+
+export OMP_PROC_BIND='true'
+
+While there is not a separate 'large' partition, a job can still explicitly request all of the resources on a large memory node. Please note that there is no premium for using Expanse's large memory nodes. Users are advised to request the large nodes only if they need the extra memory.
+
+Back to top
+
+Using GPU Nodes
+GPU nodes are allocated as a separate resource. The GPU nodes can be accessed via either the "gpu" or the "gpu-shared" partitions.
+
+#SBATCH -p gpu
+
+or
+
+#SBATCH -p gpu-shared
+
+When users request 1 GPU, in gpu-shared partition, by default they will also receive, 1 CPU, and 1G memory.  Here is an example AMBER script using the gpu-shared queue.
+
+GPU job
+#!/bin/bash
+#SBATCH --job-name="ambergpu"
+#SBATCH --output="ambergpu.%j.%N.out"
+#SBATCH --partition=gpu
+#SBATCH --nodes=1
+#SBATCH --gpus=4
+#SBATCH --mem=377300M
+#SBATCH --account=<<project*>>
+#SBATCH --no-requeue
+#SBATCH -t 01:00:00
+
+module purge
+module load gpu
+module load slurm
+module load openmpi			
+module load amber
+pmemd.cuda -O -i mdin.GPU -o mdout.GPU.$SLURM_JOBID -x mdcrd.$SLURM_JOBID \
+    -nf mdinfo.$SLURM_JOBID -1 mdlog.$SLURM_JOBID -p prmtop -c inpcrd
+
+* Expanse  requires users to enter a valid project name; users can list valid project by running the expanse-client script.
+
+GPU-shared job
+#!/bin/bash
+#SBATCH --job-name="ambergpushared"
+#SBATCH --output="ambergpu.%j.%N.out"
+#SBATCH --partition=gpu-shared
+#SBATCH --nodes=1
+#SBATCH --gpus=2
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=93G
+#SBATCH --account=<<project*>>
+#SBATCH --no-requeue
+#SBATCH -t 01:00:00
+
+module purge
+module load gpu
+module load slurm
+module load openmpi			
+module load amber
+pmemd.cuda -O -i mdin.GPU -o mdout-OneGPU.$SLURM_JOBID -p prmtop -c inpcrd
+ 
+
+* Expanse  requires users to enter a valid project name; users can list valid project by running the expanse-client script.
+
+ 
+
+Users can find application specific example job script on the system in directory /cm/shared/examples/sdsc/.
+
+GPU modes can be controlled for jobs in the "gpu" partition.  By default, the GPUs are in non-exclusive mode and the persistence mode is 'on'.  If a particular "gpu"  partition job needs exclusive access the following options should be set in your batch script:
+
+#SBATCH --constraint=exclusive
+
+To turn persistence off add the following line to your batch script:
+
+#SBATCH --constraint=persistenceoff
+
+The charging equation will be:
+
+GPU SUs = (Number of GPUs) x (wallclock time)
+
+SLURM No-Requeue Option
+SLURM will requeue jobs if there is a node failure. However, in some cases this might be detrimental if files get overwritten. If users wish to avoid automatic requeue, the following line should be added to their script:
+
+#SBATCH --no-requeue
+
+The 'requeue' count limit is currently set to 5. The job will be requeued 5 times after which the job will be placed in the REQUEUE_HOLD state and the job must be canceled and resubmitted.
+
+Example Scripts for Applications
+SDSC User Services staff have developed sample run scripts for common applications. They are available in the /cm/shared/examples directory on Expanse.
+
+Job Dependencies
+There are several scenarios (e.g. splitting long running jobs, workflows) where users may require jobs with dependencies on successful completions of other jobs. In such cases, SLURM's --dependency option can be used. The syntax is as follows:
+
+[user@login01-expanse ~]$ sbatch --dependency=afterok:jobid jobscriptfile
+
+Job Monitoring and Management
+Users can monitor jobs using the squeue command.
+
+[user@expanse ~]$ squeue -u user1
+
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            256556   compute raxml_na user1     R    2:03:57      4 expanse-14-[11-14]
+            256555   compute raxml_na user1     R    2:14:44      4 expanse-02-[06-09]
+
+In this example, the output lists two jobs that are running in the "compute" partition. The jobID, partition name, job names, user names, status, time, number of nodes, and the node list are provided for each job. Some common squeue options include:
+
+Option	Result
+-i <interval>	Repeatedly report at intervals (in seconds)
+-ij<job_list>	Displays information for specified job(s)
+-p <part_list>	Displays information for specified partitions (queues)
+-t <state_list>	Shows jobs in the specified state(s)
+Users can cancel their own jobs using the scancel command as follows:
+
+[user@expanse ~]$ scancel <jobid>
+Back to top
+
+Globus: SDSC Collections, Data Movers and Mount Points
+All of Expanse's Lustre filesystems are accessible via the SDSC Expanse specific collections(SDSC HPC - Expanse Lustre ; *SDSC HPC - Projects) . The following table shows the mount points on the data mover nodes (that are the backend for ).
+
+Machine	Location on machine	Location on Globus/Data Movers
+*Expanse	/expanse/projects	/
+Expanse	/expanse/lustre/projects	/projects/...
+Expanse	/expanse/lustre/scratch	/scratch/...
+Back to top
+
+Storage Overview
+Users are responsible for backing up all important data in case of unexpected data loss at SDSC
+
+The SDSC Expanse Lustre file system (including /expanse/lustre/scratch and /expanse/lustre/project) IS NOT an archival file system. The SDSC Expanse Lustre file system IS NOT backed up. SDSC will enforce a strict purge policy on the Expanse Lustre filesystem. Project space will be purged 90 days after allocation expires. Scratch files will be purged 90 days from creation date.
+
+Local Scratch Disk
+The compute nodes on Expanse have access to fast flash storage. There is 1TB of SSD space available for use on each compute node. The latency to the SSDs is several orders of magnitude lower than that for spinning disk (<100 microseconds vs. milliseconds) making them ideal for user-level check pointing and applications that need fast random I/O to large scratch files. Users can access the SSDs only during job execution under the following directories local to each compute node:
+
+/scratch/$USER/job_$SLURM_JOB_ID
+Partition	Space Available
+compute,shared	1 TB
+gpu, gpu-shared	1.6TB
+large-shared	3.2 TB
+Parallel Lustre Filesystems
+In addition to the local scratch storage, users will have access to global parallel filesystems on Expanse. Every Expanse node has access to a 12 PB Lustre parallel file system (provided by Aeon Computing) and a 7 PB Ceph Object Store system, 140 GB/second performance storage. SDSC limits the number of files that can be stored in the /lustre/scratch filesystem to 2 million files per user. Users should contact support for assistance at the ACCESS Help Desk if their workflow requires extensive small I/O, to avoid causing system issues assosiated with load on the metadata server.
+
+The two Lustre filesystems available on Expanse are:
+
+Lustre Expanse scratch filesystem: /expanse/lustre/scratch/$USER/temp_project
+Lustre NSF projects filesystem: /expanse/lustre/projects/
+Submitting Jobs Using Lustre
+Jobs that need to use the Lustre filesystem should explicitly reqeust the feature by including the following line  to their script:
+
+#SBATCH --constraint="lustre"
+
+This constraint can be used in combination with any other constraints you are already using. For example:
+
+#SBATCH --constraint="lustre&persistenceoff&exclusive"
+
+ Jobs submitted without --constraint="lustre" that need the Lustre filesystem will be scheduled on nodes without Lustre and will FAIL.
+
+Home File System
+After logging in, users are placed in their home directory, /home, also referenced by the environment variable $HOME. The home directory is limited in space and should be used only for source code storage. User will have access to 100GB in /home. Jobs should  never be run from the home file system, as it is not set up for high performance throughput. Users should keep usage on $HOME under 100GB. Backups are currently being stored on a rolling 8-week period. In case of file corruption/data loss, please contact us at ACCESS Help Desk to retrieve the requested files.
+
+Back to top
+
+Composable Systems
+Expanse also supports Composable Systems, allowing reserachers to create a virtual 'tool set' of resources, such as Kubernetes resources, for a specific project and then re-compose it as needed. Expanse will also feature direct scheduler integration with the major cloud providers, leveraging high-speed networks to ease data movement to and from the cloud.
+
+All Composable System requests must include a brief justification, specifically describing why a Composable System is required for the project.
+
+Back to top
+
+Software
+Expanse supports a broad application base with installs and modules for commonly used packages in bioinformatics, molecular dynamics, machine learning, quantum chemistry, structural mechanics, and visualization, and will continue to support Singularity-based containerization in Expanse. Users can search for available software on Expanse using the module command Expanse Modules documentation.
+
+Back to top
+
+Publications
+Related Links
+Help Desk
+Expanse User Portal
+Advanced Computing Training
+Training Catalog
+donate
+About
+SDSC
+Overview
+Timeline
+About the Director
+Contacts & Leadership
+Staff Directory
+Careers
+Visitor Info
+SDSC
+Services
+High-Performance Computing
+Data Science Solutions
+Cyberinfrastructure Services
+Business Services
+SDSC
+Support
+Accounts & Allocations
+Resource Documentation
+Technical Consulting
+System News & Status
+Research &
+Development
+Centers of Excellence
+Groups, Labs, & Projects
+Collaboration
+Education &
+Training
+Advanced Computing Training
+College to Career Programs
+K-12 Programs
+Internships
+News &
+Events
+News Releases
+In The News
+Newsletter
+Events
+Publications
+Media Kit
+FacebookTwitterInstagramLinkedInFlickrYouTube
+SDSC - UC San Diego, MC 0505 | 9500 Gilman Drive | La Jolla, CA 92093-0505
+
+Tel. (858) 534-5000 | Fax. (858) 534-5152 | info@sdsc.edu | Terms of Use | Privacy Policy | Sitemap | Got feedback?
+
+© 2023, The Regents of the University of California

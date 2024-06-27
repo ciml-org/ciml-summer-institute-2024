@@ -1,0 +1,355 @@
+
+UCSD logo
+Directory
+Status
+Business
+ABOUT SDSC
+SERVICES
+SUPPORT
+RESEARCH & DEVELOPMENT
+EDUCATION & TRAINING
+NEWS & EVENTS
+Search...
+
+HOME > SUPPORT > EXPANSE USER GUIDE
+Expanse User Guide
+Technical Summary
+System Access
+Expanse User Portal
+Modules
+Account Management
+Job Charging
+Compiling
+Running Jobs
+GPU Nodes
+Data Movement
+Storage
+Composable Systems
+Software Packages
+Publications
+Expanse User Guide
+Technical Summary
+
+
+Expanse is a dedicated Advanced Cyberinfrastructure Coordination Ecosystem: Services and Support (ACCESS) cluster designed by Dell and SDSC delivering 5.16 peak petaflops, and will offer Composable Systems and Cloud Bursting.
+
+Expanse's standard compute nodes are each powered by two 64-core AMD EPYC 7742 processors and contain 256 GB of DDR4 memory, while each GPU node contains four NVIDIA V100s (32 GB SMX2) connected via NVLINK and dual 20-core Intel Xeon 6248 CPUs. Expanse also has four 2 TB large memory nodes.
+
+Expanse is organized into 13 SDSC Scalable Compute Units (SSCUs), comprising 728 standard nodes, 54 GPU nodes and 4 large-memory nodes. Every Expanse node has access to a 12 PB Lustre parallel file system (provided by Aeon Computing) and a 7 PB Ceph Object Store system. Expanse uses the Bright Computing HPC Cluster management system and the SLURM workload manager for job scheduling.
+
+Expanse Portal Login
+
+Expanse supports the ACCESS core software stack, which includes remote login, remote computation, data movement, science workflow support, and science gateway support toolkits.
+
+Expanse is an NSF-funded system operated by the San Diego Supercomputer Center at UC San Diego, and is available through the ACCESS program.
+
+Resource Allocation Policies
+The maximum allocation for a Principle Investigator on Expanse is 15M core-hours and 75K GPU hours. Limiting the allocation size means that Expanse can support more projects, since the average size of each is smaller.
+Science Gateways requesting in the Maximize tier can request up to 30M core-hours.
+Job Scheduling Policies
+The maximum allowable job size on Expanse is 4,096 cores – a limit that helps shorten wait times since there are fewer nodes in idle state waiting for large number of nodes to become free.
+Expanse supports long-running jobs - run times can be extended to one week. Users requests will be evaluated based on number of jobs and job size. 
+Expanse supports shared-node jobs (more than one job on a single node). Many applications are serial or can only scale to a few cores. Allowing shared nodes improves job throughput, provides higher overall system utilization, and allows more users to run on Expanse.
+Technical Details
+System Component	Configuration
+Compute Nodes
+CPU Type	AMD EPYC 7742
+Nodes	728
+Sockets	2
+Cores/socket	64
+Clock speed	2.25 GHz
+Flop speed	4608 GFlop/s
+Memory capacity	
+* 256 GB DDR4 DRAM
+
+Local Storage	
+1TB Intel P4510 NVMe PCIe SSD
+
+Max CPU Memory bandwidth	409.5 GB/s
+GPU Nodes
+GPU Type	NVIDIA V100 SMX2
+Nodes	52
+GPUs/node	4
+CPU Type	Xeon Gold 6248
+Cores/socket	20
+Sockets	2
+Clock speed	2.5 GHz
+Flop speed	34.4 TFlop/s
+Memory capacity	*384 GB DDR4 DRAM
+Local Storage	
+1.6TB Samsung PM1745b NVMe PCIe SSD
+
+Max CPU Memory bandwidth	281.6 GB/s
+Large-Memory
+CPU Type	AMD EPYC 7742
+Nodes	4
+Sockets	2
+Cores/socket	64
+Clock speed	2.25 GHz
+Flop speed	4608 GFlop/s
+Memory capacity	2 TB
+Local Storage	
+3.2 TB  (2 X 1.6 TB Samsung PM1745b NVMe PCIe SSD)
+
+STREAM Triad bandwidth	~310 GB/sec
+Full System
+Total compute nodes	728
+Total compute cores	93,184
+Total GPU nodes	52
+Total V100 GPUs	208
+Peak performance	5.16 PFlop/s
+Total memory	247 TB
+Total memory bandwidth	215 TB/s
+Total flash memory	824 TB
+HDR InfiniBand Interconnect
+Topology	Hybrid Fat-Tree
+Link bandwidth	100 Gb/s (bidirectional); HDR200 switches
+Peak bisection bandwidth	8.5 TB/s
+MPI latency	1.17-1.69 µs
+DISK I/O Subsystem
+File Systems	NFS, Ceph
+Lustre Storage(performance)	12 PB
+Ceph Storage	7 PB
+I/O bandwidth (performance disk)	140 GB/s, 200K IOPs
+ 
+
+Systems Software Environment
+Software Function	Description
+Cluster Management	Bright Cluster Manager
+Operating System	Rocky Linux
+File Systems	Lustre, Ceph
+Scheduler and Resource Manager	SLURM
+ACCESS Software	CTSS
+User Environment	Lmod
+Compilers	AOCC, GCC, Intel, PGI
+Message Passing	Intel MPI, MVAPICH, Open MPI
+Back to top
+
+System Access
+As an ACCESS computing resource, Expanse is accessible to ACCESS users who are given time on the system. To obtain an account, users may submit a proposal through the ACCESS Allocation Request System  or request a Trial Account.
+
+Interested parties may contact the ACCESS Help Desk for help with an Expanse proposal (see sidebar for contact information).
+
+Logging in to Expanse
+Expanse supports access via the command line using an ACCESS-wide password or ssh-keys, and web-based access via the Expanse User Portal. While CPU and GPU resources are allocated separately, the login nodes are the same. To log in to Expanse from the command line, use the hostname:
+
+login.expanse.sdsc.edu
+
+The following are examples of Secure Shell (ssh) commands that may be used to log in to Expanse:
+
+ssh <your_username>@login.expanse.sdsc.edu
+ssh -l <your_username> login.expanse.sdsc.edu
+
+Notes and hints
+When you log in to expanse.sdsc.edu, you will be assigned one of the two login nodes login0[1-2]-expanse.sdsc.edu. These nodes are identical in both architecture and software environment. Users should normally log in through login.expanse.sdsc.edu, but may specify one of the two nodes directly if they see poor performance.
+Please feel free to append your public key to your ~/.ssh/authorized_keys file to enable access from authorized hosts without having to enter your password. We accept RSA, ECDSA and ed25519 keys. Make sure you have a strong passphrase on the private key on your local machine.
+You can use ssh-agent or keychain to avoid repeatedly typing the private key password.
+Hosts which connect to SSH more frequently than ten times per minute may get blocked for a short period of time
+Do not use the login nodes for computationally intensive processes, as hosts for running workflow management tools, as primary data transfer nodes for large or numerous data transfers or as servers providing other services accessible to the Internet. The login nodes are meant for file editing, simple data analysis, and other tasks that use minimal compute resources. All computationally demanding jobs should be submitted and run through the batch queuing system.
+Login nodes are not the same as the batch nodes, Users should request an interactive sessions to compile programs.
+2FA with Google Authenticator (Optional)
+Expanse allows user to use two-factor authentication (2FA) when using a password to log in.  2FA adds a layer of security to your authentication process.  Expanse uses Google Authenticator, which is a standards-based implementation.Install Authenticator App
+
+Users will first need to Install an authenticator app on their smartphone or other device. Users can use any app that supports importing TOTP 2FA codes with a QR code. (Google Authenticator, DUO Mobile App, LastPass Authenticator App, etc)  We suggest using the Google Authenticator app if you do not an athenticator application already istalled on your mobile device. 
+Google Authenticator for Apple IOS
+
+Google Authenticator for Android Once the authenticator app has been installed, users will need to enroll and pair the 2FA device with their Expanse Account.
+
+To enroll:
+1) Log in to login.expanse.sdsc.edu
+
+2) On the command line load the sdsc module:
+
+>module load sdsc
+
+3) Resize your terminal window and/or font size so it can display at least 82 columns by 40 lines
+
+4) On the command line run  to command:
+
+>otp-enroll
+
+5) Using your smart phone, scan the QR code with your OTP/2FA application
+
+6) Confirm the scan by entering the 6-digit code from the OTP/2FA application
+
+7) Save your emergency scratch codes, in case you need to log in and don't have access to your mobile.  (You can always log in  with SSH keys instead of using an emergency code)
+
+8) Answer 'y' to the prompt asking if you want to update your .google_authenticator file.
+
+At this time 2FA is optional, users may un-enroll at any time.
+
+To un-enroll:
+
+1) Log in to login.expanse.sdsc.edu.
+
+2) Remove the file ~/.google_authenticator
+
+3) Once you have removed the .google_authenticaor file from the server side, you can remove the entry on your smart phone or other device
+
+Expanse User Portal
+The Expanse User Portal provides a quick and easy way for Expanse users to log in, transfer and edit files, and submit and monitor jobs. The Portal provides a gateway for launching interactive applications such as MATLAB, RStudio, and an integrated web-based environment for file management and job submission. All ACCESS users with a valid Expanse allocation have access via their ACCESS-based credentials.
+
+Back to top
+
+Modules
+Environment Modules provide for dynamic modification of your shell environment. Module commands set, change, or delete environment variables, typically in support of a particular application. They also let the user choose between different versions of the same software or different combinations of related codes.
+
+Expanse uses Lmod, a Lua-based module system. Users will now need to setup their own environment by loading available modules into the shell environment, including compilers and libraries and the batch scheduler.
+
+Users will not see all the available modules when they run the module available command without loading a compiler. Users should use the command module spider to see if a particular package exists and can be loaded on the system. For additional details, and to identify dependents modules, use the command:
+
+module spider <application_name>
+
+The module paths are different for the CPU and GPU nodes. Users can enable the paths by loading the following modules:
+
+module load cpu (for cpu nodes)
+
+module load gpu (for gpu nodes)
+
+Users are requested to ensure that both sets are not loaded at the same time in their build/run environment (use the module list command to check in an interactive session).
+
+On the GPU nodes, the gnu compiler used for building packages is the default version 8.3.1 from the OS. Hence, no additional module load command is required to use them. For example, if one needs OpenMPI built with gnu compilers, the following is sufficient:
+
+module load openmpi
+
+Useful Modules Commands
+Here are some common module commands and their descriptions:
+
+Command	Description
+module list	
+List the modules that are currently loaded
+
+module avail	
+List the modules that are available in environment
+
+module spider	
+List of the modules and extensions currently available
+
+module display <module_name>	
+Show the environment variables used by <module name> and how they are affected
+
+module unload <module name>	
+Remove <module name> from the environment
+
+module load <module name>	
+Load <module name> into the environment
+
+module swap <module one> <module two>	
+Replace <module one> with <module two> in the environment
+
+Loading and unloading modules
+Some modules depend on others, so they may be loaded or unloaded as a consequence of another module command. If a model has dependencies, the command module spider <module_name> will provide additional details.
+
+Module: command not found
+
+The error message module: command not found is sometimes encountered when switching from one shell to another or attempting to run the module command from within a shell script or batch job. The reason the module command may not be inherited as expected is that it is defined as a function for your login shell. If you encounter this error, execute the following from the command line (interactive shells) or add to your shell script (including SLURM batch scripts):
+
+source /etc/profile.d/modules.sh
+Back to top
+
+Managing Your User Account
+The expanse-client script provides additional details regarding project availability and usage.  The script is located at:
+
+/cm/shared/apps/sdsc/current/bin/expanse-client
+
+The script uses the 'sdsc' module, which is loaded by default. 
+
+[user@login01 ~]$ module load sdsc
+ 
+To review your available projects on Expanse resource use the 'user' parameter and '-r' to desginate a resource.  If no resouce is designated expanse data will be shown by default.
+
+user@login01 ~]$ expanse-client user -r expanse
+
+Resource expanse
+
+╭───┬─────────────┬─────────┬────────────┬──────┬───────────┬─────────────────╮
+│   │ NAME        │ PROJECT │ TG PROJECT │ USED │ AVAILABLE │ USED BY PROJECT │
+├───┼─────────────┼─────────┼────────────┼──────┼───────────┼─────────────────┤
+│ 1 │ user        │ ddp386  │            │ 0    │ 110000    │ 8318            │
+╰───┴─────────────┴─────────┴────────────┴──────┴───────────┴─────────────────╯
+
+To see full list of available resources, use the 'resource' command:
+
+[user@login02 ~]$ expanse-client resource
+Available resources:
+expanse
+expanse_gpu
+expanse_industry
+expanse_industry_gpu
+
+To review project details, use the 'project' parameter followed by an eligible project. (use -p option to report with out formatting):
+
+user@login01 ~]$ expanse-client project ddp386 -p
+
+Resource expanse
+Project ddp386
+TG Project
+Total allocation 110000
+Total spent 8318
+Expiration November 16, 2022
+
+NAME USED AVAILABLE USED BY PROJECT
+-------------------------------------------------
+user 0 110000 8318
+user1 0 110000 8318
+user2 18 110000 8318
+user3 7825 110000 8318
+user4 0 110000 8318
+user5 152 110000 8318
+
+
+For additional help using the expanse-client tool:
+
+[user@login01 ~]$ expanse-client -h
+
+Usage:
+expanse-client [command][flags]
+
+Available Commands:
+help Help about any command
+project Get 'project' information
+resource Get resources
+user Get 'user' information
+
+Flags:
+-a, --auth authenticate the request
+-h, --help help for user
+-p, --plain plain no graphics output
+-v, --verbose verbose output
+-r, --resource string Resource to query (default: "expanse")
+
+Global Flags:
+-a, --auth authenticate the request
+-p, --plain plain no graphics output
+-v, --verbose verbose output
+
+Many users will have access to multiple projects (e.g. an allocation for a research project and a separate allocation for classroom or educational use). Users should verify that the correct project is designated for all batch jobs. Awards are granted for a specific purposes and should not be used for other projects. Designate a project by replacing  << project >> with a project listed in the SBATCH directive in your job script:
+
+  #SBATCH -A << project >>
+
+Adding Users to a Project
+Project PIs and co-PIs can add/remove users(accounts) to/from a project. To do this, log in to your  ACCESS portal account and go to the Manage Allocations page.
+
+Back to top
+
+Job Charging
+The charge unit for all SDSC machines, including Expanse, is the Service Unit (SU). This corresponds to the equivalent use of one compute core utilizing less than or equal to 2G of data for one hour, or 1 GPU using less than 92G of data for 1 hour. Keep in mind that your charges are based on the resources that are tied up by your job and don't necessarily reflect how the resources are used. Charges on jobs submitted to the 'shared' partitions (shared,gpu-shared,debug,gpu-debug,large-shared) are based on either the number of cores or the fraction of the memory requested, whichever is larger. Jobs submitted to the node-exclusive partitions (compute, gpu) will be charged for the all 128 cores, whether the resources are used or not.  The minimum charge for any job is 1 SU.
+
+Job Charge Considerations
+A node-exclusive job that runs on a compute node for one hour will be charged 128 SUs (128 cores x 1 hour)
+A node-exclusive job that runs on a GPU node for one hour will be charge 4GPU hours (4 GPU x 1 hour)
+A node-exclusive job that runs on a Large memory node for one hour will be charged 1024 SUs (2TB memory X 1 hour)
+A serial job in the shared queue that uses less than 2 GB memory and runs for one hour will be charged 1 SU (1 core x 1 hour)
+Each standard compute node has ~256 GB of memory and 128 cores
+Each standard node core will be allocated 1 GB of memory, users should explicitly include the --mem directive to request additional memory
+Max. available memory per compute node --mem = 249208M
+Each GPU node has 4 GPUs,  ~384GB of memory and 40 cores
+Default resource allocation for 1 GPU =  1 GPU, 1 CPU, and 1G of memory,  users will need to explicitly ask for additional resources in their job script.
+For max memory on a GPU node, users should request --mem = 377308M
+A GPU SU is equivalent to 1GPU, <10CPUs, and <92G of memory.
+Multicore jobs will scale according to resource utilization
+Each large memory node has ~2 TB of memory and 128 cores
+By default the system will only allocate 1 GB of memory per core,  explicitly use the --mem directive to request additional memory
+Max. memory per large memory node --mem = 2055638M
+Back to top
+
