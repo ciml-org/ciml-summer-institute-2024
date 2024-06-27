@@ -1,0 +1,56 @@
+1 Request a GPU shared node  with pytorch
+
+jupyter-gpu-shared-pytorch
+
+
+-----------------------------------
+2 ssh into that node
+squeue -u $USER     
+ssh exp-X-X
+
+Note: X-X should be the expanse node id numbers
+
+-----------------------------------
+3 Load modules 
+
+module load gpu
+module load slurm
+module load singularitypro/3.11
+
+----------------------------------
+4 Run “singularity shell” command
+singularity shell  /cm/shared/apps/containers/singularity/pytorch/pytorch-latest.sif –nv --bind /expanse,/scratch  
+
+----------------------------------
+5 Run  “pip install”  commands
+#Note that for cpu use faiss-cpu; for gpu use faiss-gpu;
+#This will set up packages in ~/.local
+
+pip install --upgrade huggingface_hub[pytorch,cli] transformers accelerate datas
+ets
+pip install --upgrade langchain sentence-transformers langchain-community
+pip install --upgrade bitsandbytes pypdf faiss-gpu pydantic
+pip install --upgrade langchain-huggingface
+pip install --upgrade unstructured
+
+----------------------------------
+6 Login to hugging face
+/home/$USER/.local/huggingface-cli login --token     
+Note, you may have change path if you set up alternative paths
+
+----------------------------------
+7 Run your script
+python3 Rag_example_v1.py > stdoutput_rag.txt
+
+
+---------------------------------
+8 optionally, set up alternative paths
+
+export PYTHONPATH=/home/$USER/Local_HFgpu-latest/lib/python3.10/site-packages/:$
+PYTHONPATH
+export PATH=/home/$USER/Local_HFgpu_latest/local/bin:$PATH
+
+Note: you can set up alternative installation locations, 
+but some of the pip install options for that were not working so well for this demo
+
+
