@@ -9,6 +9,9 @@
 ### Reading and Presentations:
 * **Lecture material:**
 * **Presentation slides:**
+  * https://github.com/ciml-org/ciml-summer-institute-2024/blob/main/3.6_deep_learning_special_connections/C24-DL-connections-v10.pdf
+  * 
+  
 ### TASKS: None at this time.
 
 [Back to Top](#top)
