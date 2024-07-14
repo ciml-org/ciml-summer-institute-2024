@@ -7,8 +7,7 @@
 **Presented by:** [Paul Rodriguez](https://profiles.ucsd.edu/paul.rodriguez) (p4rodriguez at ucsd.edu) 
 
 ### Reading and Presentations:
-* **Lecture material:**   https://github.com/ciml-org/ciml-summer-institute-2024/blob/main/3.3_practical_guidelines_for_training_deep_learning_on_hpc/C24_PracticalGuilde_Multinode_v4.pdf
-* **Presentation slides:**
+* **Presentation slides:** https://github.com/ciml-org/ciml-summer-institute-2024/blob/main/3.3_practical_guidelines_for_training_deep_learning_on_hpc/C24_PracticalGuilde_Multinode_v4.pdf
 ### TASKS: None at this time.
 
 [Back to Top](#top)
